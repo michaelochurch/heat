@@ -6,4 +6,4 @@ main = do
   rdd        <- textFile "resources/log.txt"
   let isError str = (take 5 str) == "ERROR"
       errorlines =  rFilter isError rdd
-  putStrLn $ (show . length $ errorlines) ++ " error lines."
+  putStrLn $ (show . rCount $ errorlines) ++ " error lines."
