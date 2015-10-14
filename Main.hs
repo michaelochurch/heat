@@ -1,2 +1,6 @@
+import Heat.Import
+
 main :: IO ()
-main = putStrLn "Hello from the heat package."
+main = do
+  rdd <- textFile "resources/log.txt"
+  putStrLn $ (show . length $ rdd) ++ " lines."

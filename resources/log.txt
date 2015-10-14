@@ -1,0 +1,11 @@
+INFO 2015-10-15 Sunny and warm.
+INFO 2015-11-01 It's cold out.
+INFO 2015-11-15 Quite pleasant.
+WARN 2015-12-01 Freezing my fscking finger off.
+INFO 2015-12-15 Mid 40s with fog.
+ERROR 2016-01-01 TOO FSCKING COLD TO THINK
+WARN 2016-01-15 I am buried in snow.
+INFO 2016-02-01 Blue sky of death day.
+ERROR 2016-02-15 It is pleasant and I don't believe it.
+ERROR 2016-02-29 LEAP DAY? WHY?
+INFO 2016-03-15 Sunny and warm.
