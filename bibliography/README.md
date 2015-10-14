@@ -5,4 +5,4 @@ produced a useful list of links.
 
 [Computer Systems: A Programmers Perspective](http://jarson.asia/resource/CSAPP.pdf)
 
-'Reason': for insight into high-performance programming.
+*Reason*: for insight into high-performance programming.
