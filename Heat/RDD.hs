@@ -7,9 +7,9 @@ class RDD r where
   rFlatMap  :: (a -> [b]) -> r a -> r b
   rCount    :: r a -> Integer
 
--- Silly instance that probably won't live long. 
+-- Silly instance that probably won't live long. Neither R nor D...
 instance RDD [] where
   rMap     = map
   rFilter  = filter
   rFlatMap = concatMap
-  rCount   = length
+  rCount   = fromIntegral . length
