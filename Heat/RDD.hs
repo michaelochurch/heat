@@ -1,15 +1,25 @@
+{-# LANGUAGE ExistentialQuantification #-}
+
 module Heat.RDD where
 
--- This will evolve into a megaclass... and then I will have to refactor it.
-class RDD r where
-  rMap      :: (a -> b) -> r a -> r b
-  rFilter   :: (a -> Bool) -> r a -> r a
-  rFlatMap  :: (a -> [b]) -> r a -> r b
-  rCount    :: r a -> Integer
+import Prelude hiding (map, filter)
+import qualified Prelude
 
--- Silly instance that probably won't live long. Neither R nor D...
-instance RDD [] where
-  rMap     = map
-  rFilter  = filter
-  rFlatMap = concatMap
-  rCount   = fromIntegral . length
+data RDD a = FromFile [a] | forall b. MappedRDD (b -> a) (RDD b) |
+             FilteredRDD (a -> Bool) (RDD a)
+
+collect :: RDD a -> [a]
+collect rdd =
+  case rdd of
+   FromFile strs     -> strs
+   MappedRDD f rdd   -> Prelude.map f (collect rdd)
+   FilteredRDD f rdd -> Prelude.filter f (collect rdd)
+
+count :: RDD a -> Int
+count = length . collect
+
+map :: (a -> b) -> RDD a -> RDD b
+map = MappedRDD
+
+filter :: (a -> Bool) -> RDD a -> RDD a
+filter = FilteredRDD

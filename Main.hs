@@ -1,9 +1,9 @@
-import Heat.Import
-import Heat.RDD
+import qualified Heat.Import as Import
+import qualified Heat.RDD    as RDD
 
 main :: IO ()
 main = do
-  rdd        <- textFile "resources/log.txt"
+  rdd        <- Import.textFile "resources/log.txt"
   let isError str = (take 5 str) == "ERROR"
-      errorlines =  rFilter isError rdd
-  putStrLn $ (show . rCount $ errorlines) ++ " error lines."
+      errorlines =  RDD.filter isError rdd
+  putStrLn $ (show . RDD.count $ errorlines) ++ " error lines."
