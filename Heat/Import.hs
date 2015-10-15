@@ -6,4 +6,4 @@ import Heat.RDD
 textFile :: String -> IO (RDD String)
 textFile filename = do
   !text <- readFile filename
-  return $ FromFile $ lines text
+  return $ (FromFile filename)$ lines text
